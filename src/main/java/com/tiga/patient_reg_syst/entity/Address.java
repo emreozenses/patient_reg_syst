@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @AllArgsConstructor
@@ -25,5 +26,12 @@ public class Address {
     @OneToMany(cascade = {CascadeType.DETACH,CascadeType.MERGE,
             CascadeType.PERSIST,CascadeType.REFRESH},mappedBy = "address")
     private List<Patient> patientList;
+
+    public void addBook(Patient patient){
+        if(patientList == null){
+            patientList = new ArrayList<>();
+        }
+        patientList.add(patient);
+    }
 
 }
