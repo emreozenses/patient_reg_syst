@@ -6,6 +6,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
@@ -25,8 +28,13 @@ public class Tckn {
 
     @OneToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH},
             mappedBy = "tckn")
-    private Patient patient;
+    private List<Patient> patientList;
 
-
+    public void addPatient(Patient patient){
+        if(patientList == null){
+            patientList = new ArrayList<>();
+        }
+        patientList.add(patient);
+    }
 
 }

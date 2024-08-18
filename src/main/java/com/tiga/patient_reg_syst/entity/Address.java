@@ -27,7 +27,7 @@ public class Address {
             CascadeType.PERSIST,CascadeType.REFRESH},mappedBy = "address")
     private List<Patient> patientList;
 
-    public void addBook(Patient patient){
+    public void addPatient(Patient patient){
         if(patientList == null){
             patientList = new ArrayList<>();
         }
