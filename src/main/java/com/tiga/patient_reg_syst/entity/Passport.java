@@ -23,17 +23,16 @@ public class Passport {
 
 
     @Column(name = "passport_number")
-    @Size(min = 9,max = 9, message = "Passport number must be 9 characters")
     private String passportNumber;
 
     @OneToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH},
             mappedBy = "passport")
-    private List<Patient> patientList;
+    private Patient patient;
 
-    public void addPatient(Patient patient){
+   /* public void addPatient(Patient patient){
         if(patientList == null){
             patientList = new ArrayList<>();
         }
         patientList.add(patient);
-    }
+    }*/
 }

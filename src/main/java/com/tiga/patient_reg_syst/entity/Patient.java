@@ -53,7 +53,6 @@ public class Patient {
     private String cellPhone;
 
     @Column(name = "landline_phone")
-    @Size(min = 10, max = 15, message = "Input character length must be min.2 ,max.50")
     private String landlinePhone;
 
     @Enumerated(EnumType.STRING)

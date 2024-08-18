@@ -23,18 +23,17 @@ public class Tckn {
 
 
     @Column(name = "tckn")
-    @Size(min = 11,max = 11, message = "Tckn must be 11 digits")
     private String tckn;
 
     @OneToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH},
             mappedBy = "tckn")
-    private List<Patient> patientList;
+    private Patient patient;
 
-    public void addPatient(Patient patient){
+   /* public void addPatient(Patient patient){
         if(patientList == null){
             patientList = new ArrayList<>();
         }
         patientList.add(patient);
-    }
+    }*/
 
 }
