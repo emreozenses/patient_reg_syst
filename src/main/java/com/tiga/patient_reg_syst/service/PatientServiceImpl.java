@@ -20,6 +20,7 @@ public class PatientServiceImpl implements PatientService {
 
     @Autowired
     public PatientServiceImpl(PatientRepository patientRepository) {
+
         this.patientRepository = patientRepository;
     }
 
