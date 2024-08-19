@@ -29,10 +29,5 @@ public class Passport {
             mappedBy = "passport")
     private Patient patient;
 
-   /* public void addPatient(Patient patient){
-        if(patientList == null){
-            patientList = new ArrayList<>();
-        }
-        patientList.add(patient);
-    }*/
+
 }

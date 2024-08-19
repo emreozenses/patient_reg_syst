@@ -26,29 +26,6 @@ public class GlobalErrorHandler {
         return new ResponseEntity<>(patientErrorResponse,patientException.getHttpStatus());
     }
 
-    @ExceptionHandler
-    public ResponseEntity<AddressErrorResponse> addressErrorResponseResponseEntity (AddressException addressException){
-
-        AddressErrorResponse addressErrorResponse = new AddressErrorResponse(addressException.getMessage(),addressException.getHttpStatus().value(), LocalDateTime.now());
-        log.error("AddressException occured!",addressErrorResponse.toString());
-        return new ResponseEntity<>(addressErrorResponse,addressException.getHttpStatus());
-    }
-
-    @ExceptionHandler
-    public ResponseEntity<PassportErrorResponse> passportErrorResponseResponseEntity (PassportException passportException){
-
-        PassportErrorResponse passportErrorResponse = new PassportErrorResponse(passportException.getMessage(),passportException.getHttpStatus().value(), LocalDateTime.now());
-        log.error("PassportException occured!",passportErrorResponse.toString());
-        return new ResponseEntity<>(passportErrorResponse,passportException.getHttpStatus());
-    }
-
-    @ExceptionHandler
-    public ResponseEntity<TcknErrorResponse> tcknErrorResponseResponseEntity (TcknException tcknException){
-
-        TcknErrorResponse tcknErrorResponse = new TcknErrorResponse(tcknException.getMessage(),tcknException.getHttpStatus().value(), LocalDateTime.now());
-        log.error("TcknException occured!",tcknErrorResponse.toString());
-        return new ResponseEntity<>(tcknErrorResponse,tcknException.getHttpStatus());
-    }
 
     @ExceptionHandler
     public ResponseEntity<GlobalErrorResponse> exceptionHandler (Exception exception){
