@@ -19,4 +19,8 @@ public interface PatientRepository extends JpaRepository<Patient,Long> {
     List<Patient> filterByGender(String gender);
     @Query(value = "SELECT * FROM public.patients AS p ORDER BY p.birth_date ASC ",nativeQuery = true)
     List<Patient> orderByBirthDateAsc();
+
+    @Query(value = "SELECT *, date_part('year', age(birth_date)) AS age FROM public.patients",nativeQuery = true)
+    List<Patient> orderByAge();
+
 }

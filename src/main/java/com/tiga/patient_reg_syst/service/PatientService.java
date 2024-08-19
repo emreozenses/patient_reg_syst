@@ -27,6 +27,8 @@ public interface PatientService{
 
     List<PatientQueryResponse> orderByBirthDateAsc();
 
+    List<PatientQueryResponse> orderByAge();
+
 
 
 }

@@ -94,4 +94,11 @@ public class PatientServiceImpl implements PatientService {
     public List<PatientQueryResponse> orderByBirthDateAsc() {
         return DtoConverter.convertToPatientQueryResponseList(patientRepository.orderByBirthDateAsc());
     }
+
+    @Override
+    public List<PatientQueryResponse> orderByAge() {
+        return DtoConverter.convertToPatientQueryResponseList(patientRepository.orderByAge());
+    }
+
+
 }

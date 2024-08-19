@@ -51,6 +51,11 @@ public class PatientController {
         return patientService.orderByBirthDateAsc();
     }
 
+    @GetMapping("/orderByAge")
+    public List<PatientQueryResponse> orderByAge(){
+        return patientService.orderByAge();
+    }
+
     @PostMapping("/")
     public PatientResponse save(@RequestBody Patient patient){
         return patientService.save(patient);

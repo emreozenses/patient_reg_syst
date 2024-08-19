@@ -2,10 +2,7 @@ package com.tiga.patient_reg_syst.converter;
 
 import com.tiga.patient_reg_syst.dto.PatientQueryResponse;
 import com.tiga.patient_reg_syst.dto.PatientResponse;
-import com.tiga.patient_reg_syst.entity.Address;
-import com.tiga.patient_reg_syst.entity.Passport;
 import com.tiga.patient_reg_syst.entity.Patient;
-import com.tiga.patient_reg_syst.entity.Tckn;
 
 import java.util.ArrayList;
 import java.util.List;

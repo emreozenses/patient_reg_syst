@@ -7,7 +7,13 @@ import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.antlr.v4.runtime.misc.Interval;
+import org.hibernate.annotations.Generated;
+import org.hibernate.annotations.GenerationTime;
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
 @AllArgsConstructor
@@ -59,6 +65,8 @@ public class Patient {
     @NotNull
     @Column(name = "notification_preferences")
     private Notification notificationPreferences;
+
+
 
     @ManyToOne(cascade = {CascadeType.ALL})
     @JoinColumn(name = "address_id")
