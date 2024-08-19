@@ -1,6 +1,7 @@
 package com.tiga.patient_reg_syst.service;
 
 import com.tiga.patient_reg_syst.converter.DtoConverter;
+import com.tiga.patient_reg_syst.dto.PatientQueryResponse;
 import com.tiga.patient_reg_syst.dto.PatientResponse;
 import com.tiga.patient_reg_syst.entity.Patient;
 import com.tiga.patient_reg_syst.exceptions.PatientException;
@@ -72,5 +73,25 @@ public class PatientServiceImpl implements PatientService {
         PatientResponse willRemove = findById(patientId);
         patientRepository.deleteById(patientId);
         return willRemove;
+    }
+
+    @Override
+    public List<PatientQueryResponse> findByName(String name) {
+        return DtoConverter.convertToPatientQueryResponseList(patientRepository.findByName(name));
+    }
+
+    @Override
+    public List<PatientQueryResponse> findBySurname(String surname) {
+        return DtoConverter.convertToPatientQueryResponseList(patientRepository.findBySurname(surname));
+    }
+
+    @Override
+    public List<PatientQueryResponse> filterByGender(String gender) {
+        return DtoConverter.convertToPatientQueryResponseList(patientRepository.filterByGender(gender));
+    }
+
+    @Override
+    public List<PatientQueryResponse> orderByBirthDateAsc() {
+        return DtoConverter.convertToPatientQueryResponseList(patientRepository.orderByBirthDateAsc());
     }
 }

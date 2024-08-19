@@ -1,5 +1,6 @@
 package com.tiga.patient_reg_syst.controller;
 
+import com.tiga.patient_reg_syst.dto.PatientQueryResponse;
 import com.tiga.patient_reg_syst.dto.PatientResponse;
 import com.tiga.patient_reg_syst.entity.Patient;
 import com.tiga.patient_reg_syst.service.PatientService;
@@ -29,6 +30,25 @@ public class PatientController {
     @GetMapping("/{patientId}")
     public PatientResponse findById(@PathVariable long patientId){
         return patientService.findById(patientId);
+    }
+
+    @GetMapping("/findByName/{name}")
+    public List<PatientQueryResponse> findByName(@PathVariable String name){
+        return patientService.findByName(name);
+    }
+
+    @GetMapping("/findBySurname/{surname}")
+    public List<PatientQueryResponse> findBySurname(@PathVariable String surname){
+        return patientService.findBySurname(surname);
+    }
+
+    @GetMapping("/filterByGender/{gender}")
+    public List<PatientQueryResponse> findByGender(@PathVariable String gender){
+        return patientService.filterByGender(gender);
+    }
+    @GetMapping("/orderByBirthDateAsc")
+    public List<PatientQueryResponse> orderByBirthDateAsc(){
+        return patientService.orderByBirthDateAsc();
     }
 
     @PostMapping("/")

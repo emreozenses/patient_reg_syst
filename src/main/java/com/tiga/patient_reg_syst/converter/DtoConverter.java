@@ -1,5 +1,6 @@
 package com.tiga.patient_reg_syst.converter;
 
+import com.tiga.patient_reg_syst.dto.PatientQueryResponse;
 import com.tiga.patient_reg_syst.dto.PatientResponse;
 import com.tiga.patient_reg_syst.entity.Address;
 import com.tiga.patient_reg_syst.entity.Passport;
@@ -23,7 +24,17 @@ public class DtoConverter {
         return patientResponseList;
     }
 
+    public static PatientQueryResponse convertToPatientQueryResponse(Patient patient){
+        return new PatientQueryResponse(patient.getPatientId(), patient.getFirstName(), patient.getMidName(), patient.getSurname(),patient.getGender(),patient.getBirthDate(), patient.getEmail(), patient.getCellPhone(),patient.getAddress().getDescription());
+    }
 
+    public static List<PatientQueryResponse> convertToPatientQueryResponseList (List<Patient> patients){
+        List<PatientQueryResponse> patientQueryResponseList = new ArrayList<>();
+        patients.forEach(patient -> {
+            patientQueryResponseList.add(convertToPatientQueryResponse(patient));
+        });
+        return patientQueryResponseList;
+    }
 
 
 
