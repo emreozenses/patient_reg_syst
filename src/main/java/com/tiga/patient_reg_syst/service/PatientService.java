@@ -2,6 +2,7 @@ package com.tiga.patient_reg_syst.service;
 
 import com.tiga.patient_reg_syst.dto.PatientQueryResponse;
 import com.tiga.patient_reg_syst.dto.PatientResponse;
+import com.tiga.patient_reg_syst.dto.PatientWithAgeQueryResponse;
 import com.tiga.patient_reg_syst.entity.Patient;
 import org.springframework.stereotype.Service;
 
@@ -27,7 +28,7 @@ public interface PatientService{
 
     List<PatientQueryResponse> orderByBirthDateAsc();
 
-    List<PatientQueryResponse> orderByAge();
+    List<PatientWithAgeQueryResponse> orderByAge();
 
 
 

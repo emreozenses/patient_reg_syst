@@ -39,7 +39,7 @@ public class SecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource(){
         CorsConfiguration corsConfiguration = new CorsConfiguration();
-        corsConfiguration.setAllowedOrigins(Arrays.asList("https://cdpn.io"));
+        corsConfiguration.setAllowedOrigins(Arrays.asList("http://localhost:9000"));
         corsConfiguration.setAllowedMethods(Arrays.asList("GET","POST","PUT","DELETE"));
         corsConfiguration.setAllowedHeaders(Arrays.asList(HttpHeaders.AUTHORIZATION, HttpHeaders.CONTENT_TYPE));
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
@@ -52,22 +52,20 @@ public class SecurityConfig {
         httpSecurity.cors().configurationSource(corsConfigurationSource());
         return httpSecurity.csrf(csrf-> csrf.disable())
                 .authorizeHttpRequests(auth-> {
-                    auth.requestMatchers("/welcome/**").permitAll();
                     auth.requestMatchers("/auth/**").permitAll();
                     auth.requestMatchers("/actuator/**").permitAll();
-                    auth.requestMatchers(HttpMethod.GET,"/account/**")
+                    auth.requestMatchers(HttpMethod.GET,"/patient/**")
                             .hasAnyAuthority("ADMIN","USER");
-                    auth.requestMatchers(HttpMethod.POST,"/account/**")
+                    auth.requestMatchers(HttpMethod.POST,"/patient/**")
                             .hasAuthority("ADMIN");
-                    auth.requestMatchers(HttpMethod.PUT,"/account/**")
+                    auth.requestMatchers(HttpMethod.PUT,"/patient/**")
                             .hasAuthority("ADMIN");
-                    auth.requestMatchers(HttpMethod.DELETE,"/account/**")
+                    auth.requestMatchers(HttpMethod.DELETE,"/patient/**")
                             .hasAuthority("ADMIN");
                     auth.anyRequest().authenticated();
                 })
                 .formLogin(Customizer.withDefaults())
                 .httpBasic(Customizer.withDefaults())
-                //.oauth2Login(Customizer.withDefaults())
                 .build();
 
     }

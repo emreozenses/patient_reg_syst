@@ -2,6 +2,7 @@ package com.tiga.patient_reg_syst.repository;
 
 import com.tiga.patient_reg_syst.dto.PatientQueryResponse;
 import com.tiga.patient_reg_syst.entity.Patient;
+import com.tiga.patient_reg_syst.entity.PatientWithAge;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -21,6 +22,6 @@ public interface PatientRepository extends JpaRepository<Patient,Long> {
     List<Patient> orderByBirthDateAsc();
 
     @Query(value = "SELECT *, date_part('year', age(birth_date)) AS age FROM public.patients",nativeQuery = true)
-    List<Patient> orderByAge();
+    List<PatientWithAge> orderByAge();
 
 }

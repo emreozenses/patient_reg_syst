@@ -3,6 +3,7 @@ package com.tiga.patient_reg_syst.service;
 import com.tiga.patient_reg_syst.converter.DtoConverter;
 import com.tiga.patient_reg_syst.dto.PatientQueryResponse;
 import com.tiga.patient_reg_syst.dto.PatientResponse;
+import com.tiga.patient_reg_syst.dto.PatientWithAgeQueryResponse;
 import com.tiga.patient_reg_syst.entity.Patient;
 import com.tiga.patient_reg_syst.exceptions.PatientException;
 import com.tiga.patient_reg_syst.repository.PatientRepository;
@@ -96,8 +97,8 @@ public class PatientServiceImpl implements PatientService {
     }
 
     @Override
-    public List<PatientQueryResponse> orderByAge() {
-        return DtoConverter.convertToPatientQueryResponseList(patientRepository.orderByAge());
+    public List<PatientWithAgeQueryResponse> orderByAge() {
+        return DtoConverter.convertToPatientWithAgeQueryResponseList(patientRepository.orderByAge());
     }
 
 
