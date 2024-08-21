@@ -7,7 +7,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class PatientRegSystApplication {
 
 	public static void main(String[] args) {
+
 		SpringApplication.run(PatientRegSystApplication.class, args);
+
 	}
 
 }

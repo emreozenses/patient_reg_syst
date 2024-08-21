@@ -1,14 +1,22 @@
 package com.tiga.patient_reg_syst.entity;
 
-
+import com.fasterxml.jackson.annotation.JsonRawValue;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.databind.util.JSONPObject;
+import io.hypersistence.utils.hibernate.type.array.ListArrayType;
+import io.hypersistence.utils.hibernate.type.interval.PostgreSQLIntervalType;
+import io.hypersistence.utils.hibernate.type.json.JsonType;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Type;
 
+import java.time.Duration;
 import java.time.LocalDate;
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -35,10 +43,16 @@ public class PatientWithAge {
     @Size(min = 2, max = 50, message = "Input character length must be min.2 ,max.50")
     private String surname;
 
+    @Type(PostgreSQLIntervalType.class)
+    @Column(name = "age",
+    columnDefinition = "interval")
+    private Duration age;
+
     @Enumerated(EnumType.STRING)
     @NotNull
     @Column(name = "gender")
     private Gender gender;
+
 
     @NotNull
     @Column(name = "birth_date")
@@ -60,8 +74,6 @@ public class PatientWithAge {
     @Column(name = "notification_preferences")
     private Notification notificationPreferences;
 
-    @Column(name = "age")
-    private Double age;
 
 
     @ManyToOne(cascade = {CascadeType.ALL})
