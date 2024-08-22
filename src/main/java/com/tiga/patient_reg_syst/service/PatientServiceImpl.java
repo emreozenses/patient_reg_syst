@@ -67,6 +67,7 @@ public class PatientServiceImpl implements PatientService {
             foundPatient.get().setMidName(patient.getMidName());
             foundPatient.get().setSurname(patient.getSurname());
             foundPatient.get().setBirthDate(patient.getBirthDate());
+            foundPatient.get().setAge(patient.getAge());
             foundPatient.get().setGender(patient.getGender());
             foundPatient.get().setEmail(patient.getEmail());
             foundPatient.get().setCellPhone(patient.getCellPhone());
