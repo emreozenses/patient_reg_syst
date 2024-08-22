@@ -67,13 +67,20 @@ public class PatientServiceImpl implements PatientService {
             foundPatient.get().setMidName(patient.getMidName());
             foundPatient.get().setSurname(patient.getSurname());
             foundPatient.get().setBirthDate(patient.getBirthDate());
-            foundPatient.get().setAge(patient.getAge());
             foundPatient.get().setGender(patient.getGender());
             foundPatient.get().setEmail(patient.getEmail());
             foundPatient.get().setCellPhone(patient.getCellPhone());
             foundPatient.get().setLandlinePhone(patient.getLandlinePhone());
             foundPatient.get().getAddress().setDescription(patient.getAddress().getDescription());
             foundPatient.get().setNotificationPreferences(patient.getNotificationPreferences());
+
+            LocalDate birthDate = foundPatient.get().getBirthDate();
+            LocalDate currentDate = LocalDate.now();
+
+            Period period = Period.between(birthDate, currentDate);
+            Integer calculatedAge = period.getYears();
+            foundPatient.get().setAge(calculatedAge);
+
             patientRepository.save(foundPatient.get());
             return DtoConverter.convertToPatientResponse(foundPatient.get());
         }
