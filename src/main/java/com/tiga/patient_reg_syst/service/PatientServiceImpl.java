@@ -3,7 +3,6 @@ package com.tiga.patient_reg_syst.service;
 import com.tiga.patient_reg_syst.converter.DtoConverter;
 import com.tiga.patient_reg_syst.dto.PatientQueryResponse;
 import com.tiga.patient_reg_syst.dto.PatientResponse;
-import com.tiga.patient_reg_syst.dto.PatientWithAgeQueryResponse;
 import com.tiga.patient_reg_syst.entity.Patient;
 import com.tiga.patient_reg_syst.exceptions.PatientException;
 import com.tiga.patient_reg_syst.repository.PatientRepository;
@@ -11,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.List;
 import java.util.Optional;
 
@@ -44,6 +45,15 @@ public class PatientServiceImpl implements PatientService {
 
     @Override
     public PatientResponse save(Patient patient) {
+
+
+        LocalDate birthDate = patient.getBirthDate();
+        LocalDate currentDate = LocalDate.now();
+
+        Period period = Period.between(birthDate, currentDate);
+        Integer calculatedAge = period.getYears();
+        patient.setAge(calculatedAge);
+
         return DtoConverter.convertToPatientResponse(patientRepository.save(patient));
     }
 
@@ -97,8 +107,8 @@ public class PatientServiceImpl implements PatientService {
     }
 
     @Override
-    public List<PatientWithAgeQueryResponse> orderByAge() {
-        return DtoConverter.convertToPatientWithAgeQueryResponseList(patientRepository.orderByAge());
+    public List<PatientQueryResponse> orderByAge() {
+        return DtoConverter.convertToPatientQueryResponseList(patientRepository.orderByAge());
     }
 
 

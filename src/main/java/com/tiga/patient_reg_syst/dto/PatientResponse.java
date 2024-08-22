@@ -6,6 +6,6 @@ import org.antlr.v4.runtime.misc.Interval;
 import java.time.LocalDate;
 
 public record PatientResponse(Long patientId, String tckn, String passportNumber, String firstName, String midName, String surname, Gender gender,
-                             LocalDate birthDate, String email, String cellPhone, String landlinePhone,
+                             LocalDate birthDate,Integer age, String email, String cellPhone, String landlinePhone,
                               Notification notificationPreferences, String address) {
 }

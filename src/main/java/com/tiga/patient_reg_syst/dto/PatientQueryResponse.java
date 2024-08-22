@@ -8,5 +8,5 @@ import org.antlr.v4.runtime.misc.Interval;
 import java.time.LocalDate;
 
 public record PatientQueryResponse(Long patientId, String firstName, String midName, String surname, Gender gender,
-                                    LocalDate birthDate, String email, String cellPhone, String address) {
+                                    LocalDate birthDate,Integer age ,String email, String cellPhone, String address) {
 }

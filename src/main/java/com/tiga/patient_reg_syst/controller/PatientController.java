@@ -2,7 +2,6 @@ package com.tiga.patient_reg_syst.controller;
 
 import com.tiga.patient_reg_syst.dto.PatientQueryResponse;
 import com.tiga.patient_reg_syst.dto.PatientResponse;
-import com.tiga.patient_reg_syst.dto.PatientWithAgeQueryResponse;
 import com.tiga.patient_reg_syst.entity.Patient;
 import com.tiga.patient_reg_syst.service.PatientService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,7 +52,7 @@ public class PatientController {
     }
 
     @GetMapping("/orderByAge")
-    public List<PatientWithAgeQueryResponse> orderByAge(){
+    public List<PatientQueryResponse> orderByAge(){
         return patientService.orderByAge();
     }
 

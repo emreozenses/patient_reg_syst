@@ -1,6 +1,7 @@
 package com.tiga.patient_reg_syst.entity;
 
 
+import io.hypersistence.utils.hibernate.type.interval.PostgreSQLIntervalType;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -11,10 +12,14 @@ import org.antlr.v4.runtime.misc.Interval;
 import org.hibernate.annotations.Generated;
 import org.hibernate.annotations.GenerationTime;
 import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.annotations.Type;
 import org.hibernate.type.SqlTypes;
+import org.springframework.data.repository.cdi.Eager;
 
 import java.io.Serializable;
+import java.time.Duration;
 import java.time.LocalDate;
+import java.time.Period;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -50,6 +55,10 @@ public class Patient {
     @Column(name = "birth_date")
     private LocalDate birthDate;
 
+
+    @Column(name = "age")
+    private Integer age;
+
     @Column(name = "email")
     @Size(min = 6, max = 50, message = "Input character length must be min.2 ,max.50")
     private String email;
@@ -79,5 +88,15 @@ public class Patient {
     @OneToOne(cascade = {CascadeType.ALL})
     @JoinColumn(name = "passport_number_id")
     private Passport passport;
+
+
+
+    public Integer calculateAge(LocalDate birthDate, LocalDate currentDate) {
+        // Calculate period between birthdate and current date
+        Period period = Period.between(birthDate, LocalDate.now());
+        Integer calculatedAge = period.getYears();
+        setAge(calculatedAge);
+        return age;
+    }
 
 }
