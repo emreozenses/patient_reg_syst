@@ -39,7 +39,7 @@ public class SecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource(){
         CorsConfiguration corsConfiguration = new CorsConfiguration();
-        corsConfiguration.setAllowedOrigins(Arrays.asList("http://localhost:9000"));
+        corsConfiguration.setAllowedOrigins(Arrays.asList("http://localhost:9001"));
         corsConfiguration.setAllowedMethods(Arrays.asList("GET","POST","PUT","DELETE"));
         corsConfiguration.setAllowedHeaders(Arrays.asList(HttpHeaders.AUTHORIZATION, HttpHeaders.CONTENT_TYPE));
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
@@ -55,7 +55,7 @@ public class SecurityConfig {
                     auth.requestMatchers("/auth/**").permitAll();
                     auth.requestMatchers("/actuator/**").permitAll();
                     auth.requestMatchers(HttpMethod.GET,"/patient/**")
-                            .hasAnyAuthority("ADMIN","USER");
+                            .permitAll();//hasAnyAuthority("ADMIN","USER");
                     auth.requestMatchers(HttpMethod.POST,"/patient/**")
                             .hasAuthority("ADMIN");
                     auth.requestMatchers(HttpMethod.PUT,"/patient/**")

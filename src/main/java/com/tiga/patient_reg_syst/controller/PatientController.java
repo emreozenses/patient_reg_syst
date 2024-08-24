@@ -58,11 +58,13 @@ public class PatientController {
 
     @PostMapping("/")
     public PatientResponse save(@RequestBody Patient patient){
+        patientService.deleteDuplicatePatient();
         return patientService.save(patient);
     }
 
     @PutMapping("/{patientId}")
     public PatientResponse update(@PathVariable long patientId, @RequestBody Patient patient){
+        patientService.deleteDuplicatePatient();
         return patientService.update(patientId,patient);
     }
 

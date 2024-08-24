@@ -119,5 +119,10 @@ public class PatientServiceImpl implements PatientService {
         return DtoConverter.convertToPatientQueryResponseList(patientRepository.orderByAge());
     }
 
+    @Override
+    public void deleteDuplicatePatient() {
+        patientRepository.deleteDuplicatePatient();
+    }
+
 
 }
