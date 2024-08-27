@@ -47,6 +47,11 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 		<dependency>
+			<groupId>org.mybatis.spring.boot</groupId>
+			<artifactId>mybatis-spring-boot-starter</artifactId>
+			<version>3.0.3</version>
+		</dependency>
+		<dependency>
 			<groupId>io.hypersistence</groupId>
 			<artifactId>hypersistence-utils-hibernate-63</artifactId>
 			<version>3.8.2</version>
@@ -55,6 +60,11 @@
 			<groupId>com.fasterxml.jackson.module</groupId>
 			<artifactId>jackson-module-jakarta-xmlbind-annotations</artifactId>
 			<version>2.17.2</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-configuration-processor</artifactId>
+			<optional>true</optional>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -72,6 +82,17 @@
 			<artifactId>lombok</artifactId>
 			<optional>true</optional>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-jdbc</artifactId>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.hibernate.orm/hibernate-core -->
+		<dependency>
+			<groupId>org.hibernate.orm</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>6.2.6.Final</version>
+		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
